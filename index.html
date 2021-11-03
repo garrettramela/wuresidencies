@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Locator</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+    <script src="https://www.gstatic.com/external_hosted/handlebars/v4.7.6/handlebars.min.js"></script>
+    <script src="script.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+    <link href="locatorplus.css" rel="stylesheet">
+    <link href="style.css" rel="stylesheet">
+    <script src="locatorplus.js"></script>
+    <script>
+      const CONFIGURATION = {
+        "locations": [
+          {"title":"Arrowhead Regional Medical Center","address1":"400 N Pepper Ave","address2":"Colton, CA 92324, USA","coords":{"lat":34.074146403230515,"lng":-117.35114109325409},"placeId":"ChIJ-666uFGt3IAR9yvzltMAer0"},
+          {"title":"Baylor University Medical Center, part of Baylor Scott \u0026 White Health","address1":"3500 Gaston Ave","address2":"Dallas, TX 75246, USA","coords":{"lat":32.78986755534312,"lng":-96.77783657790985},"placeId":"ChIJTZxCv8SYToYRaewa5BUSmw4"},
+          {"title":"Beaumont Health","address1":"3601 W 13 Mile Rd","address2":"Royal Oak, MI 48073, USA","coords":{"lat":42.514310385546786,"lng":-83.19095639325408},"placeId":"ChIJo0D_QiPGJIgRr2IYiI4AmDg"},
+          {"title":"Berkshire Medical Center","address1":"725 North St","address2":"Pittsfield, MA 01201, USA","coords":{"lat":42.4600097536845,"lng":-73.24886166441802},"placeId":"ChIJnwsvvWtO54kRu8QVx90_cQI"},
+          {"title":"David Grant Medical Center: Johnson Blake MD","address1":"101 Bodin Cir","address2":"Travis AFB, CA 94535, USA","coords":{"lat":38.26993571950867,"lng":-121.96419143558197},"placeId":"ChIJr_aZ7EQ-hYARH09OmlbZ_O4"},
+          {"title":"Gundersen Lutheran Medical Center","address1":"1900 South Ave","address2":"La Crosse, WI 54601, USA","coords":{"lat":43.795207059999335,"lng":-91.2487463067459},"placeId":"ChIJi0UcGo6s_ocRJ14p2Wmht90"},
+          {"title":"Hackensack UMC Palisades Foundation","address1":"Stonehenge","address2":"7600 River Rd, North Bergen, NJ 07047, USA","coords":{"lat":40.794326990989376,"lng":-73.99686499140165},"placeId":"ChIJb-QFC3dYwokRn3AP_6pvTz4"},
+          {"title":"Swedish Medical Center Healthone","address1":"799 E Hampden Ave","address2":"Englewood, CO 80113, USA","coords":{"lat":39.65446301952598,"lng":-104.9805902095398},"placeId":"ChIJyd6eR4GAbIcRK-PxDegozKo"},
+          {"title":"Hennepin County Medical Center Emergency Room","address1":"900 S 8th St","address2":"Minneapolis, MN 55415, USA","coords":{"lat":44.97189481030214,"lng":-93.26223896441803},"placeId":"ChIJawo4DqAys1IRQHlpECHsOsw"},
+          {"title":"Henry Ford Allegiance Health","address1":"205 N East Ave","address2":"Jackson, MI 49201, USA","coords":{"lat":42.25090992159185,"lng":-84.39272820674589},"placeId":"ChIJIearyYMlPYgRn_rBMwTWPpc"},
+          {"title":"Henry Ford Wyandotte Hospital","address1":"2333 Biddle Ave","address2":"Wyandotte, MI 48192, USA","coords":{"lat":42.21060297218825,"lng":-83.14817602408142},"placeId":"ChIJ8YKFwMAwO4gRqKOREGvWdjA"},
+          {"title":"HonorHealth John C. Lincoln Medical Center","address1":"250 E Dunlap Ave","address2":"Phoenix, AZ 85020, USA","coords":{"lat":33.56909589791156,"lng":-112.07102203558198},"placeId":"ChIJ1UpS2HRtK4cRTq_MD7LDg6g"},
+          {"title":"Howard University Hospital","address1":"2041 Georgia Ave NW","address2":"Washington, DC 20060, USA","coords":{"lat":38.917992310402795,"lng":-77.0205502932541},"placeId":"ChIJJ6Ro_YnIt4kR8PGm7QmLLNQ"},
+          {"title":"Icahn School of Medicine at Mount Sinai","address1":"1 Gustave L. Levy Pl","address2":"New York, NY 10029, USA","coords":{"lat":40.790045749095235,"lng":-73.95324476441805},"placeId":"ChIJm8ktUadYwokRQe-wyiDDkyU"},
+          {"title":"301 Fisher St","address1":"301 Fisher St","address2":"Biloxi, MS 39534, USA","coords":{"lat":30.412978120067198,"lng":-88.91289993751221},"placeId":"ChIJq0es_2oOnIgR1n9tN6ybl3E"},
+          {"title":"147 N Brent St","address1":"147 N Brent St","address2":"Ventura, CA 93003, USA","coords":{"lat":34.27435281477986,"lng":-119.2577664509262},"placeId":"ChIJk0g_IT-t6YARriL9Ur0p-34"},
+          {"title":"Lankenau Medical Center","address1":"100 E Lancaster Ave","address2":"Wynnewood, PA 19096, USA","coords":{"lat":39.98833765953045,"lng":-75.26257542883607},"placeId":"ChIJqVXqYMbAxokRmCIwXdWDw58"},
+          {"title":"Mayo Clinic","address1":"Mayo Clinic","address2":"1216 2nd St SW, Rochester, MN 55902, USA","coords":{"lat":44.019815291203614,"lng":-92.48106458703306},"placeId":"ChIJEwyulxJf94cRSwBRRQ6dhdg"},
+          {"title":"MercyOne Children\u0027s Hospital","address1":"East Tower","address2":"1111 6th Ave, Des Moines, IA 50314, USA","coords":{"lat":41.5985960827533,"lng":-93.62286694232787},"placeId":"ChIJL3g4iQmZ7ocRL3LI_HkKbWU"},
+          {"title":"St. Vincent Medical Center - Mercy Health","address1":"2213 Cherry St","address2":"Toledo, OH 43608, USA","coords":{"lat":41.66817118327875,"lng":-83.54278521045076},"placeId":"ChIJ____by-BO4gRACRlQYSlDiI"},
+          {"title":"Mike O\u0027Callaghan Federal Medical Center-Pathology","address1":"4700 Las Vegas Blvd N","address2":"Nellis AFB, NV 89191, USA","coords":{"lat":36.24610001691735,"lng":-115.04921922209014},"placeId":"ChIJV1fK4XjdyIARD5cml6jYToc"},
+          {"title":"Mount Carmel Health Systems Clinical Skills and Simulation Center","address1":"777 W State St","address2":"Columbus, OH 43222, USA","coords":{"lat":39.95757469808135,"lng":-83.0206812674591},"placeId":"ChIJy3v7bhOPOIgRDteentuswI0"},
+          {"title":"Mountain Vista Medical Center","address1":"1301 S Crismon Rd","address2":"Mesa, AZ 85209, USA","coords":{"lat":33.39162859955067,"lng":-111.6120713067459},"placeId":"ChIJETgF7AWxK4cR2rexirBHShQ"},
+          {"title":"MountainView Regional Medical Center","address1":"4311 E Lohman Ave","address2":"Las Cruces, NM 88011, USA","coords":{"lat":32.32367572863264,"lng":-106.72869756441803},"placeId":"ChIJP2JLKUw93oYRKIE8UShyqso"},
+          {"title":"NYC Health + Hospitals/Metropolitan.","address1":"1901 1st Ave","address2":"New York, NY 10029, USA","coords":{"lat":40.78496988133541,"lng":-73.94442612209014},"placeId":"ChIJG1z-2KhYwokRhPmjewNNWcc"},
+          {"title":"NewYork-Presbyterian Queens Hospital","address1":"56-45 Main St","address2":"Queens, NY 11355, USA","coords":{"lat":40.747586209209565,"lng":-73.82449070356596},"placeId":"ChIJJ-iLpm5gwokRjmTfwQ6e-K8"},
+          {"title":"Oregon Health \u0026 Science University","address1":"3181 SW Sam Jackson Park Rd","address2":"Portland, OR 97239, USA","coords":{"lat":45.49827279908959,"lng":-122.68560460674593},"placeId":"ChIJ20fUpEYKlVQR8n140ESGbeE"},
+          {"title":"Riverside University Health System Medical Center","address1":"26520 Cactus Ave","address2":"Moreno Valley, CA 92555, USA","coords":{"lat":33.91241041129263,"lng":-117.19603122209016},"placeId":"ChIJ4-Om45-n3IAR2MMOXKQ5OLY"},
+          {"title":"Sinai Hospital of Baltimore","address1":"2401 W Belvedere Ave","address2":"Baltimore, MD 21215, USA","coords":{"lat":39.35284631146445,"lng":-76.66216429325407},"placeId":"ChIJ9T9tWsAayIkR65PEd2DpEEw"},
+          {"title":"Cleveland Clinic - South Pointe Hospital Emergency Department","address1":"20000 Harvard Ave","address2":"Warrensville Heights, OH 44122, USA","coords":{"lat":41.44811375408388,"lng":-81.5372738067459},"placeId":"ChIJ28PBZ7XiMIgRp5_jVLcJyKE"},
+          {"title":"St Barnabas Hospital - Medical Education","address1":"4422 3rd Ave.","address2":"Bronx, NY 10457, USA","coords":{"lat":40.85283366291783,"lng":-73.89157709325409},"placeId":"ChIJaRrMBH30wokRkBiKfdY_mtw"},
+          {"title":"Saint Joseph Hospital","address1":"1375 E 19th Ave","address2":"Denver, CO 80218, USA","coords":{"lat":39.74664062664112,"lng":-104.97159265092621},"placeId":"ChIJ4W9dmDF5bIcRy_9o4C-lk1s"},
+          {"title":"Saint Louis University School of Medicine","address1":"1402 S Grand Blvd","address2":"St. Louis, MO 63104, USA","coords":{"lat":38.62285488608982,"lng":-90.23832577738494},"placeId":"ChIJi8ESG4602IcRhtm5iZlYxQQ"},
+          {"title":"St. Anthony Hospital Emergency Room","address1":"11600 W 2nd Pl","address2":"Lakewood, CO 80228, USA","coords":{"lat":39.716567058236706,"lng":-105.12935530555727},"placeId":"ChIJd65O-_6Da4cR3FgLHpfCKwg"},
+          {"title":"AHS St John Pharmacy","address1":"47601 Grand River Ave","address2":"Novi, MI 48374, USA","coords":{"lat":42.4880157196481,"lng":-83.51850465686951},"placeId":"ChIJVVVVVdioJIgR8W1V9B69uzI"},
+          {"title":"Sunrise Health GME Consortium","address1":"3150 N Tenaya Way #480","address2":"Las Vegas, NV 89128, USA","coords":{"lat":36.21683335636366,"lng":-115.2493964067459},"placeId":"ChIJweMev5rqyIARnw8yVoRjvP0"},
+          {"title":"Swedish Medical Center","address1":"501 E Hampden Ave","address2":"Englewood, CO 80113, USA","coords":{"lat":39.654084128945684,"lng":-104.98051096441803},"placeId":"ChIJyd6eR4GAbIcRW9enFvXGiKQ"},
+          {"title":"Texas Tech University","address1":"2500 Broadway","address2":"Lubbock, TX 79409, USA","coords":{"lat":33.59016685377262,"lng":-101.89158595671387},"placeId":"ChIJR8ge8xPEQIYRSXiwt3SzLQU"},
+          {"title":"University of Texas Health Science Center at San Antonio Department of Radiation Oncology","address1":"7979 Wurzbach Rd","address2":"San Antonio, TX 78229, USA","coords":{"lat":29.513678541497942,"lng":-98.57966016945036},"placeId":"ChIJJUgYQlZnXIYRpE9t9OQc-Pc"},
+          {"title":"UCSF Fresno","address1":"155 N Fresno St","address2":"Fresno, CA 93701, USA","coords":{"lat":36.74329832375382,"lng":-119.78493420901489},"placeId":"ChIJg5ffwRtelIARHh2NQkm-m4I"},
+          {"title":"University of Hi-Geriatric Med","address1":"347 N Kuakini St","address2":"Honolulu, HI 96817, USA","coords":{"lat":21.32160906145283,"lng":-157.85624269522404},"placeId":"ChIJU-j0KNZtAHwR6yYUPE9k2-w"},
+          {"title":"Virginia Mason Medical Center","address1":"1100 9th Ave","address2":"Seattle, WA 98101, USA","coords":{"lat":47.60973455729107,"lng":-122.32781382353518},"placeId":"ChIJx3kMjY8NkFQR9nFRWgZ3Ypc"}
+        ],
+        "mapOptions": {"center":{"lat":38.0,"lng":-100.0},"fullscreenControl":true,"mapTypeControl":false,"streetViewControl":false,"zoom":4,"zoomControl":true,"maxZoom":17},
+        "mapsApiKey": "AIzaSyD9JdkCgRZA-rWSacy7NZUevC9vJ8xqfxo"
+      };
+
+      function initMap() {
+        new LocatorPlus(CONFIGURATION);
+      }
+    </script>
+    <script id="locator-result-items-tmpl" type="text/x-handlebars-template">
+      {{#each locations}}
+        <li class="location-result" data-location-index="{{index}}">
+          <button class="select-location">
+            <h2 class="name">{{title}}</h2>
+          </button>
+          <div class="address">{{address1}}<br>{{address2}}</div>
+          <button class="details-button">
+            View details
+          </button>
+          {{#if travelDistanceText}}
+            <div class="distance">{{travelDistanceText}}</div>
+          {{/if}}
+          {{#if ../showDirectionsButton}}
+            <button class="show-directions" title="Show directions to this location">
+              <svg width="34" height="34" viewBox="0 0 34 34"
+                   fill="none" xmlns="http://www.w3.org/2000/svg" alt="Show directions">
+                <path d="M17.5867 9.24375L17.9403 8.8902V8.8902L17.5867 9.24375ZM16.4117 9.24375L16.7653 9.59731L16.7675 9.59502L16.4117 9.24375ZM8.91172 16.7437L8.55817 16.3902L8.91172 16.7437ZM8.91172 17.9229L8.55817 18.2765L8.55826 18.2766L8.91172 17.9229ZM16.4117 25.4187H16.9117V25.2116L16.7652 25.0651L16.4117 25.4187ZM16.4117 25.4229H15.9117V25.63L16.0582 25.7765L16.4117 25.4229ZM25.0909 17.9229L25.4444 18.2765L25.4467 18.2742L25.0909 17.9229ZM25.4403 16.3902L17.9403 8.8902L17.2332 9.5973L24.7332 17.0973L25.4403 16.3902ZM17.9403 8.8902C17.4213 8.3712 16.5737 8.3679 16.0559 8.89248L16.7675 9.59502C16.8914 9.4696 17.1022 9.4663 17.2332 9.5973L17.9403 8.8902ZM16.0582 8.8902L8.55817 16.3902L9.26527 17.0973L16.7653 9.5973L16.0582 8.8902ZM8.55817 16.3902C8.0379 16.9105 8.0379 17.7562 8.55817 18.2765L9.26527 17.5694C9.13553 17.4396 9.13553 17.227 9.26527 17.0973L8.55817 16.3902ZM8.55826 18.2766L16.0583 25.7724L16.7652 25.0651L9.26517 17.5693L8.55826 18.2766ZM15.9117 25.4187V25.4229H16.9117V25.4187H15.9117ZM16.0582 25.7765C16.5784 26.2967 17.4242 26.2967 17.9444 25.7765L17.2373 25.0694C17.1076 25.1991 16.895 25.1991 16.7653 25.0694L16.0582 25.7765ZM17.9444 25.7765L25.4444 18.2765L24.7373 17.5694L17.2373 25.0694L17.9444 25.7765ZM25.4467 18.2742C25.9631 17.7512 25.9663 16.9096 25.438 16.3879L24.7354 17.0995C24.8655 17.2279 24.8687 17.4363 24.7351 17.5716L25.4467 18.2742Z" fill="#7e7efd"/>
+                <path fill-rule="evenodd" clip-rule="evenodd" d="M19 19.8333V17.75H15.6667V20.25H14V16.9167C14 16.4542 14.3708 16.0833 14.8333 16.0833H19V14L21.9167 16.9167L19 19.8333Z" fill="#7e7efd"/>
+                <circle cx="17" cy="17" r="16.5" stroke="#7e7efd"/>
+              </svg>
+            </button>
+          {{/if}}
+        </li>
+      {{/each}}
+    </script>
+    <script id="locator-details-tmpl" type="text/x-handlebars-template">
+      <button class="back-button">
+        <img class="icon" src="https://fonts.gstatic.com/s/i/googlematerialicons/arrow_back/v11/24px.svg" alt=""/>
+        Back
+      </button>
+      <header>
+        <div class="banner">
+          <svg width="23" height="32" viewBox="0 0 23 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path fill-rule="evenodd" clip-rule="evenodd" d="M22.9976 11.5003C22.9976 13.2137 22.7083 14.9123 21.8025 16.7056C18.6321 22.9832 12.7449 24.3314 12.2758 30.7085C12.2448 31.1294 11.9286 31.4744 11.4973 31.4744C11.0689 31.4744 10.7527 31.1294 10.7218 30.7085C10.2527 24.3314 4.3655 22.9832 1.19504 16.7056C0.289306 14.9123 0 13.2137 0 11.5003C0 5.13275 5.14557 0 11.5003 0C17.852 0 22.9976 5.13275 22.9976 11.5003Z" fill="#4285F4"/>
+            <path fill-rule="evenodd" clip-rule="evenodd" transform="translate(5.5,5.5)" d="M6 8.84091L9.708 11L8.724 6.92961L12 4.19158L7.6856 3.83881L6 0L4.3144 3.83881L0 4.19158L3.276 6.92961L2.292 11L6 8.84091Z" fill="#FBE15C"/>
+          </svg>
+        </div>
+        <h2>{{location.title}}</h2>
+      </header>
+      {{#if location.travelDistanceText}}
+        <div class="distance">{{location.travelDistanceText}} away</div>
+      {{/if}}
+      <div class="address">
+        {{location.address1}}<br>
+        {{location.address2}}
+      </div>
+      <div class="atmosphere">
+        {{#if place.rating}}
+          <span class="star-rating-numeric">{{place.rating}}</span>
+          <span>
+            {{#each place.fullStarIcons}}
+              <img src="https://fonts.gstatic.com/s/i/googlematerialicons/star/v15/24px.svg"
+                   alt="" class="star-icon"/>
+            {{/each}}
+            {{#each place.halfStarIcons}}
+              <img src="https://fonts.gstatic.com/s/i/googlematerialicons/star_half/v17/24px.svg"
+                   alt="" class="star-icon"/>
+            {{/each}}
+            {{#each place.emptyStarIcons}}
+              <img src="https://fonts.gstatic.com/s/i/googlematerialicons/star_outline/v9/24px.svg"
+                   alt="" class="star-icon"/>
+            {{/each}}
+          </span>
+        {{/if}}
+        {{#if place.user_ratings_total}}
+          <a href="{{place.url}}" target="_blank">{{place.user_ratings_total}} reviews</a>
+        {{else}}
+          <a href="{{place.url}}" target="_blank">See on Google Maps</a>
+        {{/if}}
+        {{#if place.price_level}}
+          &bull;
+          <span class="price-dollars">
+            {{#each place.dollarSigns}}${{/each}}
+          </span>
+        {{/if}}
+      </div>
+      <hr/>
+      {{#if place.opening_hours}}
+        <div class="hours contact">
+          <img src="https://fonts.gstatic.com/s/i/googlematerialicons/schedule/v12/24px.svg"
+               alt="Opening hours" class="icon"/>
+          <div class="right">
+            {{#each place.openingHoursSummary}}
+              <div>
+                <span class="weekday">{{days}}</span>
+                <span class="hours">{{hours}}</span>
+              </div>
+            {{/each}}
+          </div>
+        </div>
+      {{/if}}
+      {{#if place.website}}
+        <div class="website contact">
+          <img src="https://fonts.gstatic.com/s/i/googlematerialicons/public/v10/24px.svg"
+               alt="Website" class="icon"/>
+          <div class="right">
+            <a href="{{place.website}}" target="_blank">{{place.websiteDomain}}</a>
+          </div>
+        </div>
+      {{/if}}
+      {{#if place.formatted_phone_number}}
+        <div class="phone contact">
+          <img src="https://fonts.gstatic.com/s/i/googlematerialicons/phone/v10/24px.svg"
+               alt="Phone number" class="icon"/>
+          <div class="right">
+            {{place.formatted_phone_number}}
+          </div>
+        </div>
+      {{/if}}
+      {{#if place.html_attributions}}
+        {{#each place.html_attributions}}
+          <p class="attribution">{{{this}}}</p>
+        {{/each}}
+      {{/if}}
+    </script>
+  </head>
+  <body>
+    <div id="map-container">
+      <div id="locations-panel">
+        <div id="locations-panel-list">
+          <header>
+            <h1 class="search-title">
+              <img src="https://fonts.gstatic.com/s/i/googlematerialicons/place/v15/24px.svg"/>
+              Find a location near you
+            </h1>
+            <div class="search-input">
+              <input id="location-search-input" placeholder="Enter your address or zip code">
+              <div id="search-overlay-search" class="search-input-overlay search">
+                <button id="location-search-button">
+                  <img class="icon" src="https://fonts.gstatic.com/s/i/googlematerialicons/search/v11/24px.svg" alt="Search"/>
+                </button>
+              </div>
+            </div>
+          </header>
+          <div class="section-name" id="location-results-section-name">
+            All locations
+          </div>
+          <div class="results">
+            <ul id="location-results-list"></ul>
+          </div>
+        </div>
+        <div id="locations-panel-details"></div>
+      </div>
+      <div id="map"></div>
+    </div>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD9JdkCgRZA-rWSacy7NZUevC9vJ8xqfxo&callback=initMap&libraries=places,geometry&channel=GMPSB_locatorplus_v4_cABCDE" async defer></script>
+  </body>
+</html>
